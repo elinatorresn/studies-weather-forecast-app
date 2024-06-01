@@ -14,7 +14,6 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     private lazy var hourLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "13:00"
         label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
         label.textColor = UIColor.contrastColor
         label.textAlignment = .center
@@ -24,7 +23,6 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     private lazy var weatherIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "sunIcon")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -32,7 +30,6 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "25ºC"
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = UIColor.contrastColor
         label.textAlignment = .center
@@ -55,6 +52,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+    }
+    
+    func loadData(time: String?, icon: UIImage?, temp: String?){
+        hourLabel.text = time
+        weatherIcon.image = icon
+        temperatureLabel.text = temp
     }
     
     required init?(coder: NSCoder) {
