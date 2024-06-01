@@ -9,7 +9,7 @@ import UIKit
 
 class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
-    static let indentifier: String = "HourlyForecast"
+    static let identifier: String = "HourlyForecast"
     
     private lazy var hourLabel: UILabel = {
         let label = UILabel()
@@ -72,11 +72,8 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
+        hourForecastStackView.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            hourForecastStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            hourForecastStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hourForecastStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            hourForecastStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             weatherIcon.heightAnchor.constraint(equalToConstant: 33)
         ])
     }
