@@ -14,7 +14,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     private lazy var weekDayLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ter".uppercased()
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.contrastColor
         return label
@@ -23,7 +22,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     private lazy var weatherIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "cloudIcon")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -31,7 +29,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     private lazy var minTemperatureLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "min 25ºC"
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.contrastColor
         return label
@@ -40,7 +37,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     private lazy var maxTemperatureLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "max 25ºC"
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = UIColor.contrastColor
         return label
@@ -59,6 +55,14 @@ class DailyForecastTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+    }
+    
+    func loadData(weekDay: String?, icon: UIImage?, min: String?, max: String?) {
+        weekDayLabel.text = weekDay
+        minTemperatureLabel.text = "min \(min ?? "")"
+        maxTemperatureLabel.text = "max \(max ?? "")"
+        weatherIcon.image = icon
+        
     }
     
     required init?(coder: NSCoder) {
@@ -81,7 +85,6 @@ class DailyForecastTableViewCell: UITableViewCell {
     private func setConstraints() {
         dailyForecastStackview.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            weatherIcon.heightAnchor.constraint(equalToConstant: 20),
             weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
         ])
     }
